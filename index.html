@@ -1,138 +1,1883 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Patna Population Analysis</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 30px;
-        }
+<meta charset="UTF-8">
 
-        h1 {
-            text-align: center;
-        }
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        h2 {
-            margin-top: 35px;
-        }
+<title>Patna Population Analysis | GHSL 2000–2020</title>
 
-        iframe {
-            width: 100%;
-            height: 600px;
-            border: 1px solid #ccc;
-        }
 
-        img {
-            max-width: 800px;
-            width: 100%;
-        }
+<style>
 
-        table {
-            border-collapse: collapse;
-            width: 70%;
-        }
+/* =====================================================
+   GENERAL
+===================================================== */
 
-        th, td {
-            border: 1px solid #999;
-            padding: 10px;
-            text-align: center;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        th {
-            background-color: #eee;
-        }
-    </style>
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f7fb;
+    color: #243447;
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   HERO HEADER
+===================================================== */
+
+.hero {
+
+    background:
+        linear-gradient(
+            135deg,
+            #4527a0,
+            #1565c0,
+            #00897b
+        );
+
+    color: white;
+
+    padding: 60px 20px 50px;
+
+    text-align: center;
+}
+
+.hero h1 {
+
+    margin: 0 0 12px;
+
+    font-size: 44px;
+
+    letter-spacing: 0.5px;
+}
+
+.hero p {
+
+    margin: 7px auto;
+
+    max-width: 900px;
+
+    font-size: 18px;
+}
+
+.badge {
+
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding: 9px 20px;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,0.18);
+
+    border: 1px solid rgba(255,255,255,0.4);
+
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.nav {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+    background: white;
+
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+
+    padding: 13px 10px;
+
+    text-align: center;
+}
+
+.nav a {
+
+    color: #3949ab;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    margin: 0 12px;
+
+    font-size: 14px;
+}
+
+.nav a:hover {
+
+    color: #00897b;
+}
+
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+.container {
+
+    max-width: 1150px;
+
+    margin: auto;
+
+    padding: 35px 20px 60px;
+}
+
+
+/* =====================================================
+   INTRODUCTION
+===================================================== */
+
+.intro {
+
+    background: white;
+
+    border-left: 6px solid #00897b;
+
+    padding: 25px 28px;
+
+    border-radius: 14px;
+
+    box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+
+    margin-bottom: 30px;
+}
+
+.intro h2 {
+
+    margin-top: 0;
+}
+
+
+/* =====================================================
+   SECTION CARDS
+===================================================== */
+
+.section {
+
+    background: white;
+
+    margin: 30px 0;
+
+    padding: 30px;
+
+    border-radius: 17px;
+
+    box-shadow: 0 5px 20px rgba(35,50,80,0.08);
+}
+
+h2 {
+
+    color: #263b80;
+
+    margin-top: 0;
+
+    font-size: 28px;
+}
+
+h3 {
+
+    color: #3949ab;
+
+    margin-top: 28px;
+}
+
+.section-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 18px;
+}
+
+.number {
+
+    width: 40px;
+
+    height: 40px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #5e35b1,
+            #1e88e5
+        );
+
+    color: white;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-weight: bold;
+
+    flex-shrink: 0;
+}
+
+
+/* =====================================================
+   MAPS
+===================================================== */
+
+.map-frame {
+
+    width: 100%;
+
+    height: 650px;
+
+    border: none;
+
+    border-radius: 13px;
+
+    box-shadow: 0 3px 14px rgba(0,0,0,0.14);
+
+    margin-top: 15px;
+}
+
+
+/* =====================================================
+   GIF
+===================================================== */
+
+.gif-box {
+
+    text-align: center;
+
+    background: #eef4ff;
+
+    padding: 20px;
+
+    border-radius: 15px;
+}
+
+.gif-box img {
+
+    max-width: 100%;
+
+    border-radius: 10px;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.caption {
+
+    color: #607080;
+
+    font-size: 14px;
+
+    margin-top: 12px;
+}
+
+
+/* =====================================================
+   STATISTICS CARDS
+===================================================== */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 16px;
+
+    margin: 22px 0 28px;
+}
+
+.stat {
+
+    padding: 22px;
+
+    border-radius: 15px;
+
+    color: white;
+
+    min-height: 135px;
+}
+
+.stat:nth-child(1) {
+
+    background:
+        linear-gradient(
+            135deg,
+            #3949ab,
+            #5e35b1
+        );
+}
+
+.stat:nth-child(2) {
+
+    background:
+        linear-gradient(
+            135deg,
+            #00897b,
+            #43a047
+        );
+}
+
+.stat:nth-child(3) {
+
+    background:
+        linear-gradient(
+            135deg,
+            #ef6c00,
+            #f9a825
+        );
+}
+
+.stat:nth-child(4) {
+
+    background:
+        linear-gradient(
+            135deg,
+            #c62828,
+            #e53935
+        );
+}
+
+.stat .label {
+
+    font-size: 14px;
+
+    opacity: 0.9;
+}
+
+.stat .value {
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    margin-top: 7px;
+}
+
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    margin-top: 20px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+}
+
+th {
+
+    background: #3949ab;
+
+    color: white;
+
+    padding: 14px;
+
+    text-align: center;
+}
+
+td {
+
+    padding: 13px;
+
+    text-align: center;
+
+    border-bottom: 1px solid #e4e8ef;
+}
+
+tr:nth-child(even) {
+
+    background: #f4f7ff;
+}
+
+tr:hover {
+
+    background: #e8eaf6;
+}
+
+
+/* =====================================================
+   TREND GRAPH
+===================================================== */
+
+.trend-image {
+
+    width: 100%;
+
+    max-width: 850px;
+
+    display: block;
+
+    margin: 22px auto;
+
+    border-radius: 10px;
+}
+
+
+/* =====================================================
+   TWO COLUMN
+===================================================== */
+
+.two-col {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 25px;
+}
+
+
+/* =====================================================
+   HIGHLIGHT BOX
+===================================================== */
+
+.highlight {
+
+    background: #e8f5e9;
+
+    border-left: 5px solid #43a047;
+
+    padding: 18px 22px;
+
+    border-radius: 10px;
+
+    margin: 18px 0;
+}
+
+
+/* =====================================================
+   KEY FINDINGS
+===================================================== */
+
+.finding-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+
+    margin-top: 20px;
+}
+
+.finding {
+
+    background: #f7f5ff;
+
+    border: 1px solid #ddd5ff;
+
+    padding: 18px;
+
+    border-radius: 12px;
+}
+
+.finding strong {
+
+    color: #4527a0;
+}
+
+
+/* =====================================================
+   METHODOLOGY
+===================================================== */
+
+.method-card {
+
+    background: #f7f5ff;
+
+    border: 1px solid #ddd5ff;
+
+    padding: 19px;
+
+    border-radius: 12px;
+
+    margin-bottom: 13px;
+}
+
+.method-card strong {
+
+    color: #4527a0;
+}
+
+
+/* =====================================================
+   LIMITATIONS
+===================================================== */
+
+.limitation {
+
+    background: #fff8e1;
+
+    border-left: 5px solid #f9a825;
+
+    padding: 18px 22px;
+
+    border-radius: 10px;
+}
+
+
+/* =====================================================
+   SOURCES
+===================================================== */
+
+.source {
+
+    background: #eef6ff;
+
+    padding: 20px 23px;
+
+    border-radius: 12px;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+
+    background: #1f2937;
+
+    color: #dbe4ee;
+
+    text-align: center;
+
+    padding: 30px 15px;
+
+    margin-top: 30px;
+}
+
+footer strong {
+
+    color: white;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 800px) {
+
+    .hero h1 {
+
+        font-size: 32px;
+    }
+
+    .stats {
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .two-col {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .finding-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .nav a {
+
+        display: inline-block;
+
+        margin: 4px 7px;
+    }
+
+    .map-frame {
+
+        height: 520px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .stats {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .section {
+
+        padding: 20px;
+    }
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-<h1>Population Analysis of Patna</h1>
 
-<p>
-This study examines the spatial distribution and temporal change
-of residential population in Patna from 2000 to 2020 using the
-GHSL Population dataset.
-</p>
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-<h2>1. Population Distribution Maps</h2>
+<header class="hero">
 
-<iframe src="Patna_population_maps.html"></iframe>
+    <h1>
+        Patna Population Analysis
+    </h1>
 
-<h2>2. Population Animation: 2000–2020</h2>
+    <p>
+        Residential Population Distribution and Change,
+        2000–2020
+    </p>
 
-<img src="Patna_population_2000_2020.gif">
+    <p>
 
-<h2>3. Population Change: 2000–2020</h2>
+        <strong>
+            GHSL Population Dataset |
+            100 m Resolution |
+            5-Year Intervals
+        </strong>
 
-<img src="Patna_population_trend.png">
+    </p>
 
-<h2>4. Population Totals</h2>
+    <div class="badge">
 
-<table>
-<tr>
-    <th>Year</th>
-    <th>Population</th>
-</tr>
+        Urban Informatics • IIT Tirupati
 
-<tr>
-    <td>2000</td>
-    <td>1,748,350</td>
-</tr>
+    </div>
 
-<tr>
-    <td>2005</td>
-    <td>1,948,444</td>
-</tr>
+</header>
 
-<tr>
-    <td>2010</td>
-    <td>2,139,269</td>
-</tr>
 
-<tr>
-    <td>2015</td>
-    <td>2,326,667</td>
-</tr>
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
 
-<tr>
-    <td>2020</td>
-    <td>2,507,450</td>
-</tr>
+<nav class="nav">
 
-</table>
+    <a href="#overview">
+        Overview
+    </a>
 
-<h2>5. Overall Change</h2>
+    <a href="#maps">
+        Maps
+    </a>
 
-<p>
-Between 2000 and 2020, the population of Patna increased from
-1,748,350 to 2,507,450, an increase of 759,100 people
-(43.42%).
-</p>
+    <a href="#animation">
+        Animation
+    </a>
 
-<h2>6. Discussion</h2>
+    <a href="#change">
+        Change
+    </a>
 
-<p>
-The maps show the spatial distribution of residential population
-across Patna. Population increased between 2000 and 2020, with
-higher population concentrations visible in built-up parts of
-the city. The temporal maps help identify how the population
-distribution changed over the study period.
-</p>
+    <a href="#totals">
+        Population
+    </a>
 
-<p>
-The analysis uses GHSL gridded population data at 100 m resolution.
-Therefore, the results represent estimated population distribution
-rather than individual household-level population. Differences in
-boundary definitions and population estimation methods may also
-affect the results.
-</p>
+    <a href="#discussion">
+        Analysis
+    </a>
 
-<h2>7. Data Source</h2>
+    <a href="#methodology">
+        Methodology
+    </a>
 
-<p>
-JRC GHSL Population (GHS_POP), 2000–2020.
-</p>
+    <a href="#sources">
+        Sources
+    </a>
+
+</nav>
+
+
+<main class="container">
+
+
+<!-- =====================================================
+     SECTION 1 — OVERVIEW
+===================================================== -->
+
+<section class="intro" id="overview">
+
+    <h2>
+        Study Overview
+    </h2>
+
+    <p>
+
+        This study examines how residential population was
+        distributed across Patna and how the population changed
+        between 2000 and 2020.
+
+    </p>
+
+    <p>
+
+        The analysis uses the Global Human Settlement Layer
+        (GHSL) Population dataset in Google Earth Engine.
+        Population distribution is examined at five-year
+        intervals: 2000, 2005, 2010, 2015 and 2020.
+
+    </p>
+
+    <p>
+
+        The analysis combines spatial maps, a population
+        animation, a 2000–2020 change map and numerical
+        population estimates to understand both the
+        <strong>magnitude</strong> and
+        <strong>spatial pattern</strong> of population change.
+
+    </p>
+
+</section>
+
+
+<!-- =====================================================
+     SECTION 2 — POPULATION DISTRIBUTION MAPS
+===================================================== -->
+
+<section class="section" id="maps">
+
+    <div class="section-title">
+
+        <span class="number">
+            1
+        </span>
+
+        <h2>
+            Population Distribution Maps
+        </h2>
+
+    </div>
+
+    <p>
+
+        The interactive map displays residential population
+        distribution for 2000, 2005, 2010, 2015 and 2020.
+
+        Use the layer control to switch between the five
+        observation years.
+
+    </p>
+
+    <p>
+
+        A consistent colour scale is used across the years,
+        allowing changes in population concentration to be
+        visually compared.
+
+    </p>
+
+    <iframe
+        class="map-frame"
+        src="Patna_population_maps.html">
+    </iframe>
+
+</section>
+
+
+<!-- =====================================================
+     SECTION 3 — GIF
+===================================================== -->
+
+<section class="section" id="animation">
+
+    <div class="section-title">
+
+        <span class="number">
+            2
+        </span>
+
+        <h2>
+            Population Animation: 2000–2020
+        </h2>
+
+    </div>
+
+    <p>
+
+        The animation presents the five-year population
+        observations sequentially. It provides a dynamic
+        view of how the spatial distribution of residential
+        population changes through time.
+
+    </p>
+
+    <div class="gif-box">
+
+        <img
+            src="Patna_population_2000_2020.gif"
+            alt="Patna population animation from 2000 to 2020">
+
+        <div class="caption">
+
+            GHSL population distribution at five-year intervals,
+            2000–2020.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SECTION 4 — CHANGE MAP
+===================================================== -->
+
+<section class="section" id="change">
+
+    <div class="section-title">
+
+        <span class="number">
+            3
+        </span>
+
+        <h2>
+            Population Change Map: 2000–2020
+        </h2>
+
+    </div>
+
+    <p>
+
+        The change map represents the difference between
+        population in 2020 and population in 2000.
+
+    </p>
+
+    <p>
+
+        Areas with positive values indicate an increase in
+        population, while areas with negative values indicate
+        a decrease. Areas with values close to zero represent
+        relatively limited change over the study period.
+
+    </p>
+
+    <iframe
+        class="map-frame"
+        src="Patna_change_map.html">
+    </iframe>
+
+</section>
+
+
+<!-- =====================================================
+     SECTION 5 — POPULATION TOTALS
+===================================================== -->
+
+<section class="section" id="totals">
+
+    <div class="section-title">
+
+        <span class="number">
+            4
+        </span>
+
+        <h2>
+            Population Totals and Trend
+        </h2>
+
+    </div>
+
+
+    <!-- STATISTICS -->
+
+    <div class="stats">
+
+
+        <div class="stat">
+
+            <div class="label">
+                Population in 2000
+            </div>
+
+            <div class="value">
+                1.75 M
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="label">
+                Population in 2020
+            </div>
+
+            <div class="value">
+                2.51 M
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="label">
+                Absolute Increase
+            </div>
+
+            <div class="value">
+                759,100
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="label">
+                Percentage Increase
+            </div>
+
+            <div class="value">
+                43.42%
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- POPULATION TABLE -->
+
+    <h3>
+        Estimated Population by Year
+    </h3>
+
+    <table>
+
+        <tr>
+
+            <th>
+                Year
+            </th>
+
+            <th>
+                Estimated Population
+            </th>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                2000
+            </td>
+
+            <td>
+                1,748,350
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                2005
+            </td>
+
+            <td>
+                1,948,444
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                2010
+            </td>
+
+            <td>
+                2,139,269
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                2015
+            </td>
+
+            <td>
+                2,326,667
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                2020
+            </td>
+
+            <td>
+                2,507,450
+            </td>
+
+        </tr>
+
+    </table>
+
+
+    <!-- TREND -->
+
+    <h3>
+        Population Trend
+    </h3>
+
+    <p>
+
+        The trend graph shows a continuous increase in the
+        estimated population of Patna throughout the study period.
+
+    </p>
+
+    <img
+        class="trend-image"
+        src="Patna_population_trend.png"
+        alt="Population trend in Patna from 2000 to 2020">
+
+</section>
+
+
+<!-- =====================================================
+     SECTION 6 — DETAILED ANALYSIS
+===================================================== -->
+
+<section class="section" id="discussion">
+
+    <div class="section-title">
+
+        <span class="number">
+            5
+        </span>
+
+        <h2>
+            Detailed Analysis and Discussion
+        </h2>
+
+    </div>
+
+
+    <!-- OVERALL FINDING -->
+
+    <div class="highlight">
+
+        <strong>
+            Overall finding:
+        </strong>
+
+        Patna's estimated residential population increased
+        from 1,748,350 in 2000 to 2,507,450 in 2020.
+
+        This represents an increase of
+        <strong>759,100 people</strong>,
+        equivalent to a
+        <strong>43.42% increase</strong>
+        over the 20-year period.
+
+    </div>
+
+
+    <!-- 5.1 -->
+
+    <h3>
+        5.1 Overall Population Growth
+    </h3>
+
+    <p>
+
+        The GHSL population estimates indicate a continuous
+        increase in Patna's residential population during
+        the study period.
+
+    </p>
+
+    <p>
+
+        The population increased from approximately
+        <strong>1.75 million</strong> in 2000 to
+        approximately <strong>2.51 million</strong>
+        in 2020.
+
+    </p>
+
+    <p>
+
+        In absolute terms, Patna gained approximately
+        <strong>759,100 people</strong> during the
+        20-year period.
+
+    </p>
+
+    <p>
+
+        The average increase over the full period was
+        approximately <strong>37,955 people per year</strong>.
+        This is a simple average calculated from the total
+        population increase over 20 years.
+
+    </p>
+
+
+    <!-- 5.2 -->
+
+    <h3>
+        5.2 Five-Year Population Change
+    </h3>
+
+    <table>
+
+        <tr>
+
+            <th>
+                Period
+            </th>
+
+            <th>
+                Population Increase
+            </th>
+
+            <th>
+                Percentage Increase
+            </th>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                2000–2005
+            </td>
+
+            <td>
+                200,094
+            </td>
+
+            <td>
+                11.45%
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                2005–2010
+            </td>
+
+            <td>
+                190,825
+            </td>
+
+            <td>
+                9.79%
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                2010–2015
+            </td>
+
+            <td>
+                187,398
+            </td>
+
+            <td>
+                8.76%
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                2015–2020
+            </td>
+
+            <td>
+                180,783
+            </td>
+
+            <td>
+                7.76%
+            </td>
+
+        </tr>
+
+    </table>
+
+
+    <p>
+
+        The five-year comparison shows that population
+        increased during every interval.
+
+    </p>
+
+    <p>
+
+        The highest five-year percentage increase occurred
+        between <strong>2000 and 2005</strong>, when population
+        increased by approximately <strong>11.45%</strong>.
+
+    </p>
+
+    <p>
+
+        The lowest percentage increase occurred between
+        <strong>2015 and 2020</strong>, at approximately
+        <strong>7.76%</strong>.
+
+    </p>
+
+    <p>
+
+        Therefore, the analysis indicates a pattern of
+        <strong>continued population growth with a gradual
+        moderation in the rate of growth</strong>.
+        Population did not decline during any of the
+        observed five-year intervals.
+
+    </p>
+
+
+    <!-- 5.3 -->
+
+    <h3>
+        5.3 Spatial Distribution of Population
+    </h3>
+
+    <p>
+
+        The population maps demonstrate that residential
+        population is not uniformly distributed across
+        the Patna urban boundary.
+
+    </p>
+
+    <p>
+
+        Higher population concentrations are visible in
+        more intensively developed and residential portions
+        of the city, while relatively lower population values
+        occur in areas with less residential concentration.
+
+    </p>
+
+    <p>
+
+        Comparing the maps for 2000, 2005, 2010, 2015 and
+        2020 makes it possible to identify areas where
+        population concentration strengthened over time.
+
+    </p>
+
+    <p>
+
+        The change map provides a direct comparison between
+        the beginning and end of the study period. It helps
+        identify locations where population increased,
+        decreased or remained relatively stable.
+
+    </p>
+
+
+    <!-- 5.4 -->
+
+    <h3>
+        5.4 Temporal Pattern
+    </h3>
+
+    <p>
+
+        The temporal analysis demonstrates a consistent
+        upward population trajectory.
+
+    </p>
+
+    <p>
+
+        Estimated population increased from
+        <strong>1,748,350</strong> in 2000 to
+        <strong>1,948,444</strong> in 2005,
+        followed by <strong>2,139,269</strong> in 2010,
+        <strong>2,326,667</strong> in 2015 and
+        <strong>2,507,450</strong> in 2020.
+
+    </p>
+
+    <p>
+
+        The animation allows this change to be observed
+        dynamically rather than viewing each year separately.
+
+    </p>
+
+    <p>
+
+        The trend graph and spatial maps complement each other.
+        The graph explains <strong>how much</strong> the total
+        population changed, while the maps provide information
+        about <strong>where</strong> population was distributed.
+
+    </p>
+
+
+    <!-- 5.5 -->
+
+    <h3>
+        5.5 Interpretation of the Growth Pattern
+    </h3>
+
+    <p>
+
+        The sustained increase in population indicates
+        continued demographic expansion within the selected
+        Patna urban boundary during 2000–2020.
+
+    </p>
+
+    <p>
+
+        The analysis shows that population growth continued
+        across the entire study period, although the
+        percentage rate of growth became progressively lower
+        across the five-year intervals.
+
+    </p>
+
+    <p>
+
+        Thus, Patna can be characterised as experiencing
+        <strong>positive but gradually moderating population
+        growth</strong> during the period analysed.
+
+    </p>
+
+    <p>
+
+        However, the GHSL population dataset by itself cannot
+        establish the specific causes of this growth. Factors
+        such as migration, natural population increase,
+        residential development and other demographic processes
+        would require additional datasets for further analysis.
+
+    </p>
+
+
+    <!-- 5.6 -->
+
+    <h3>
+        5.6 Urban Planning Implications
+    </h3>
+
+    <p>
+
+        The spatial distribution of population is important
+        for urban planning because population concentration
+        influences demand for housing, transportation,
+        water supply, sanitation, healthcare, education and
+        other public services.
+
+    </p>
+
+    <p>
+
+        Areas showing substantial population increases can
+        therefore be considered potential priority areas for
+        more detailed investigation of infrastructure capacity
+        and service provision.
+
+    </p>
+
+    <p>
+
+        The analysis demonstrates the usefulness of gridded
+        population data for urban studies because population
+        change can be examined spatially rather than only
+        through a single city-level population total.
+
+    </p>
+
+
+    <!-- 5.7 -->
+
+    <h3>
+        5.7 Key Findings
+    </h3>
+
+
+    <div class="finding-grid">
+
+
+        <div class="finding">
+
+            <strong>
+                Population Growth
+            </strong>
+
+            <p>
+
+                Population increased by
+                <strong>759,100 people</strong>
+                between 2000 and 2020.
+
+            </p>
+
+        </div>
+
+
+        <div class="finding">
+
+            <strong>
+                Overall Increase
+            </strong>
+
+            <p>
+
+                The total estimated population increased by
+                <strong>43.42%</strong>.
+
+            </p>
+
+        </div>
+
+
+        <div class="finding">
+
+            <strong>
+                Continuous Growth
+            </strong>
+
+            <p>
+
+                Population increased in every five-year
+                observation period.
+
+            </p>
+
+        </div>
+
+
+        <div class="finding">
+
+            <strong>
+                Growth Moderation
+            </strong>
+
+            <p>
+
+                The percentage increase declined from
+                <strong>11.45%</strong> in 2000–2005 to
+                <strong>7.76%</strong> in 2015–2020.
+
+            </p>
+
+        </div>
+
+
+        <div class="finding">
+
+            <strong>
+                Spatial Variation
+            </strong>
+
+            <p>
+
+                Population was not uniformly distributed
+                throughout the urban boundary.
+
+            </p>
+
+        </div>
+
+
+        <div class="finding">
+
+            <strong>
+                Planning Relevance
+            </strong>
+
+            <p>
+
+                Areas with increasing population concentration
+                may require closer examination of infrastructure
+                and service requirements.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SECTION 7 — METHODOLOGY
+===================================================== -->
+
+<section class="section" id="methodology">
+
+    <div class="section-title">
+
+        <span class="number">
+            6
+        </span>
+
+        <h2>
+            Methodology
+        </h2>
+
+    </div>
+
+
+    <div class="method-card">
+
+        <strong>
+            Step 1 – Administrative Boundary:
+        </strong>
+
+        Patna's urban local body boundary was obtained from
+        the Indian urban administrative boundaries dataset.
+
+    </div>
+
+
+    <div class="method-card">
+
+        <strong>
+            Step 2 – Population Dataset:
+        </strong>
+
+        The JRC Global Human Settlement Layer Population
+        dataset (GHS_POP) was used.
+
+    </div>
+
+
+    <div class="method-card">
+
+        <strong>
+            Step 3 – Spatial Resolution:
+        </strong>
+
+        The GHSL population dataset provides population
+        information at a 100 m spatial resolution.
+
+    </div>
+
+
+    <div class="method-card">
+
+        <strong>
+            Step 4 – Study Period:
+        </strong>
+
+        Five-year observations for 2000, 2005, 2010,
+        2015 and 2020 were analysed.
+
+    </div>
+
+
+    <div class="method-card">
+
+        <strong>
+            Step 5 – Spatial Analysis:
+        </strong>
+
+        Population rasters were clipped to the Patna
+        boundary and visualised as thematic maps.
+
+    </div>
+
+
+    <div class="method-card">
+
+        <strong>
+            Step 6 – Population Totals:
+        </strong>
+
+        Population values were summed within the Patna
+        boundary for each study year.
+
+    </div>
+
+
+    <div class="method-card">
+
+        <strong>
+            Step 7 – Change Analysis:
+        </strong>
+
+        Population change was calculated by subtracting
+        the 2000 population raster from the 2020 population
+        raster.
+
+    </div>
+
+
+    <div class="method-card">
+
+        <strong>
+            Step 8 – Dynamic Visualization:
+        </strong>
+
+        A five-year population animation was created to
+        visually represent temporal change.
+
+    </div>
+
+
+    <div class="method-card">
+
+        <strong>
+            Software and Platform:
+        </strong>
+
+        Google Earth Engine, Python, GeoPandas, geemap,
+        Folium and Matplotlib were used in the analysis.
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SECTION 8 — LIMITATIONS
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <span class="number">
+            7
+        </span>
+
+        <h2>
+            Limitations
+        </h2>
+
+    </div>
+
+
+    <div class="limitation">
+
+        <ul>
+
+            <li>
+
+                GHSL provides gridded population estimates
+                rather than household-level observations.
+
+            </li>
+
+
+            <li>
+
+                The analysis depends on the selected Patna
+                administrative boundary.
+
+            </li>
+
+
+            <li>
+
+                Population estimates may differ from official
+                census totals because of differences in data
+                sources and estimation methods.
+
+            </li>
+
+
+            <li>
+
+                A 100 m grid represents population spatially,
+                but it does not imply that population is evenly
+                distributed within each grid cell.
+
+            </li>
+
+
+            <li>
+
+                The analysis identifies population change but
+                does not establish the causal factors behind
+                the change.
+
+            </li>
+
+
+            <li>
+
+                Additional demographic, land-use, housing and
+                socioeconomic datasets would be required to
+                explain why particular areas experienced greater
+                population change.
+
+            </li>
+
+        </ul>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SECTION 9 — DATA SOURCES
+===================================================== -->
+
+<section class="section" id="sources">
+
+    <div class="section-title">
+
+        <span class="number">
+            8
+        </span>
+
+        <h2>
+            Data Sources
+        </h2>
+
+    </div>
+
+
+    <div class="source">
+
+        <p>
+
+            <strong>
+                GHSL Population:
+            </strong>
+
+            JRC Global Human Settlement Layer (GHSL)
+            Population, GHS_POP, 2000–2020.
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                Administrative Boundary:
+            </strong>
+
+            Indian urban local body boundary dataset from
+            the Indian Administrative Boundaries repository.
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                Analysis Platform:
+            </strong>
+
+            Google Earth Engine.
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                Visualization:
+            </strong>
+
+            Python, GeoPandas, geemap, Folium and Matplotlib.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <strong>
+        Patna Population Analysis
+    </strong>
+
+    <br>
+
+    Urban Informatics • IIT Tirupati
+
+    <br>
+
+    GHSL Population Analysis, 2000–2020
+
+</footer>
+
 
 </body>
+
 </html>
